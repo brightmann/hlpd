@@ -5,7 +5,7 @@ import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeShiki from "@shikijs/rehype";
 import readingTime from "reading-time";
-import rehypeFigure from "rehype-figure";
+import rehypeFigure from "./src/components/rehype-figure"
 import remarkGemoji from "remark-gemoji";
 
 /** @type {import('contentlayer2/source-files').ComputedFields} */

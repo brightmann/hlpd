@@ -127,7 +127,7 @@ export default async function PostPage(props) {
       </section>
       <div className="relative xl:grid xl:grid-cols-10 gap-8 mx-auto max-w-7xl">
         <div className="col-span-8">
-          <article className="py-8 prose mx-auto dark:prose-invert max-w-3xl">
+          <article className="py-8 prose mx-auto dark:prose-invert max-w-7xl">
             <div className="prose-sm select-none">
               <time>{moment(post.publishDate).format("LL")}</time> ·{" "}
               {post.readingTime.words} words · {post.readingTime.text}
