@@ -2,7 +2,7 @@ import { Feed } from "feed";
 import siteMetadata from "../../../data/sitemetadata";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-import { enhanceFeedContent } from "../../utils/feed-optimizer";
+import { enhanceFeedContent } from "../../components/feed-optimizer";
 
 export async function GET() {
   const feed = new Feed({

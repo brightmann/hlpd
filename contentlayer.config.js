@@ -131,7 +131,14 @@ export default makeSource({
           },
         },
       ],
-      rehypeKatex,
+      [
+        rehypeKatex,
+        {
+          strict: false,
+          trust: true,
+          output: 'htmlAndMathml'
+        }
+      ],
       rehypeSlug,
       rehypeFigure,
     ],
