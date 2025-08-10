@@ -3,7 +3,8 @@ title: 浅谈风险平价模型（一）
 featured: true
 image: /static/images/assets_return_chart.png
 imageDesc: 中国大陆版风险平价模型选取的16个大类资产对应的收益率情况
-tags: ["Finance"]
+tags:
+  - Finance
 publishDate: 2025-08-05
 lastmod: 2025-08-07
 description: 看似不带任何“市场偏见”的风险平价模型本身已构成一个明确的观点：四种不同经济情景在未来发生的概率相等，谁能轻易能下这一定论或做这一假设？
