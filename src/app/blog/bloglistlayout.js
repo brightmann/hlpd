@@ -20,7 +20,9 @@ const sortedTags = Object.keys(tagsCount).sort(
 );
 const PostsLayout = ({ pagination, initialDisplayPosts }) => {
   const displayPosts =
-    initialDisplayPosts.length > 0 ? initialDisplayPosts : null;
+    initialDisplayPosts && initialDisplayPosts.length > 0
+      ? initialDisplayPosts
+      : allPosts;
   const pathname = usePathname();
   return (
     <>
