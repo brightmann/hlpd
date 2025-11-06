@@ -3,6 +3,7 @@ import { compareDesc } from "date-fns";
 import siteMetadata from "../../data/sitemetadata";
 import AboutMe from "../components/aboutme";
 import Articles from "../components/articles";
+import MicroblogSnippet from "../components/microblog-snippet";
 
 export default function Home() {
   const filterposts = allPosts
@@ -39,13 +40,14 @@ export default function Home() {
         <p className="text-xl">{siteMetadata.description}</p>
       </div>
 
-      <div className="lg:grid lg:grid-cols-9 lg:gap-8 pt-20 max-w-6xl">
+      <div className="lg:grid lg:grid-cols-9 lg:gap-8 pt-20 max-w-7xl">
         <div className="max-w-4xl  col-span-7 pt-12">
           <Articles articles={filterposts} mostCommonTag={mostCommonTag} />
         </div>
         <div className="col-span-2 max-w-lg mx-auto">
           <div className="sticky top-0 pt-12">
             <AboutMe />
+            <MicroblogSnippet />
           </div>
         </div>
       </div>

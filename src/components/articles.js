@@ -17,7 +17,8 @@ export default function HomePage({ articles, mostCommonTag }) {
   const [tabPosition, setTabPosition] = useState(0);
 
   useEffect(() => {
-    if (tabIndex !== 2) { // Search is now at index 2 in the new TabGroup
+    if (tabIndex !== 2) {
+      // Search is now at index 2 in the new TabGroup
       setSearchQuery("");
       setSearchResults([]);
       setIsSearching(false);
@@ -50,17 +51,21 @@ export default function HomePage({ articles, mostCommonTag }) {
   const filteredArticles = (filter) => {
     const featuredArticles = articles.filter((article) => article.featured);
     const featuredSlugs = featuredArticles.map((article) => article.slug);
-    
+
     const baseArticles =
       isSearching && searchQuery.trim()
         ? searchResults
         : filter === "featured"
           ? featuredArticles
           : filter === "latest"
-            ? articles.filter((article) => !featuredSlugs.includes(article.slug))
+            ? articles.filter(
+                (article) => !featuredSlugs.includes(article.slug)
+              )
             : filter === "tag"
-              ? articles.filter((article) => 
-                  article.tags.includes(mostCommonTag) && !featuredSlugs.includes(article.slug)
+              ? articles.filter(
+                  (article) =>
+                    article.tags.includes(mostCommonTag) &&
+                    !featuredSlugs.includes(article.slug)
                 )
               : articles;
     return baseArticles.slice(0, visibleCount);
@@ -72,7 +77,7 @@ export default function HomePage({ articles, mostCommonTag }) {
       .map((article, index) => (
         <div
           key={index}
-          className="p-4 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-xs hover:shadow-md dark:shadow-zinc-700 transition px-6"
+          className="py-4 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-xs hover:shadow-md dark:shadow-zinc-700 transition px-6"
         >
           <Link href={article.slug}>
             <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 py-1">
@@ -84,9 +89,9 @@ export default function HomePage({ articles, mostCommonTag }) {
                 : article.description}
             </p>
           </Link>
-          <div className="py-2 text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="py-2 mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             <time>{moment(article.publishDate).format("LL")}</time>
-            <span className="pl-1">
+            <span className="pl-2">
               {article.tags.map((tag) => (
                 <Link
                   key={tag}
@@ -138,21 +143,17 @@ export default function HomePage({ articles, mostCommonTag }) {
       <TabGroup selectedIndex={tabIndex} onChange={setTabIndex}>
         <div>
           <TabList className="flex border-b dark:border-zinc-800 border-zinc-200 pb-2 justify-between sticky top-0">
-            {["Latest", mostCommonTag, "Search"].map(
-              (label, index) => (
-                <Tab
-                  key={index}
-                  as="button"
-                  ref={(el) => (tabRefs.current[index] = el)}
-                  className={tabButtonClass}
-                  onClick={
-                    label === "Search" ? () => setIsSearching(true) : null
-                  }
-                >
-                  {label}
-                </Tab>
-              )
-            )}
+            {["Latest", mostCommonTag, "Search"].map((label, index) => (
+              <Tab
+                key={index}
+                as="button"
+                ref={(el) => (tabRefs.current[index] = el)}
+                className={tabButtonClass}
+                onClick={label === "Search" ? () => setIsSearching(true) : null}
+              >
+                {label}
+              </Tab>
+            ))}
             <div
               className="absolute bottom-0 h-1 bg-zinc-400 dark:bg-zinc-600 transition-all duration-300"
               style={{
