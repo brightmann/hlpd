@@ -7,6 +7,12 @@ import rehypeShiki from "@shikijs/rehype";
 import readingTime from "reading-time";
 import rehypeFigure from "./src/components/rehype-figure"
 import remarkGemoji from "remark-gemoji";
+import rehypeMermaid from 'rehype-mermaid'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+
+
 
 /** @type {import('contentlayer2/source-files').ComputedFields} */
 const computedFields = {
@@ -120,17 +126,8 @@ export default makeSource({
   contentDirPath: "./data/content",
   documentTypes: [Post, Page],
   markdown: {
-    remarkPlugins: [remarkGfm, remarkMath, remarkGemoji],
+    remarkPlugins: [remarkParse,remarkRehype, remarkGfm, remarkMath, remarkGemoji],
     rehypePlugins: [
-      [
-        rehypeShiki,
-        {
-          themes: {
-            light: "material-theme-lighter",
-            dark: "material-theme-darker",
-          },
-        },
-      ],
       [
         rehypeKatex,
         {
@@ -141,6 +138,17 @@ export default makeSource({
       ],
       rehypeSlug,
       rehypeFigure,
+      rehypeMermaid,
+      rehypeStringify,
+            [
+        rehypeShiki,
+        {
+          themes: {
+            light: "material-theme-lighter",
+            dark: "material-theme-darker",
+          },
+        },
+      ],
     ],
   },
 });
