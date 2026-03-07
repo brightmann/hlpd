@@ -2,7 +2,7 @@ import { Feed } from "feed";
 import siteMetadata from "../../../data/sitemetadata";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-import { enhanceFeedContent } from "../../components/feed-optimizer";
+import { enhanceFeedContent, getMimeType } from "../../components/feed-optimizer";
 
 export async function GET() {
   const feed = new Feed({
@@ -49,7 +49,11 @@ export async function GET() {
         id: `${siteMetadata.siteUrl}${post.slug}`,
         link: `${siteMetadata.siteUrl}${post.slug}`,
         date: new Date(post.publishDate),
-        image: imageUrl,
+        enclosure: {
+          url: imageUrl,
+          length: 0,
+          type: getMimeType(imageUrl),
+        },
       });
     });
 
