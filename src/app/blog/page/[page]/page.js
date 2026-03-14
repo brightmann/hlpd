@@ -14,10 +14,8 @@ export async function generateStaticParams() {
 
 }
 
-export default async function PostsPage(context) {
-  const {
-    params: { page },
-  } = context
+export default async function PostsPage({ params }) {
+  const { page } = await params
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.publishDate), new Date(b.publishDate))
   })
