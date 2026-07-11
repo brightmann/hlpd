@@ -15,7 +15,7 @@ Next.js + Tailwindcss + Contentlayer + Markdown/MDX Blog
 - 自适应黑暗模式
 - 完整的SEO支持，支持Opengraph、JSON-LD和RSS
 - 轻量级的搜索引擎，Fuse.js实现全文搜索和模糊搜索
-- 支持mermaid渲染，需运行
+- 支持mermaid渲染
 
 ![Index Screenshot](/public/static/images/Index-Screenshot.jpg)
 
