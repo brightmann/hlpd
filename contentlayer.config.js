@@ -7,7 +7,7 @@ import rehypeShiki from "@shikijs/rehype";
 import readingTime from "reading-time";
 import rehypeFigure from "./src/components/rehype-figure"
 import remarkGemoji from "remark-gemoji";
-import rehypeMermaid from 'rehype-mermaid'
+import rehypeMermaidPre from "./src/components/rehype-mermaid-pre.js"
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
@@ -138,7 +138,7 @@ export default makeSource({
       ],
       rehypeSlug,
       rehypeFigure,
-      rehypeMermaid,
+      rehypeMermaidPre,
       rehypeStringify,
             [
         rehypeShiki,

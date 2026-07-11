@@ -4,6 +4,8 @@ const { withContentlayer } = require("next-contentlayer2");
 const nextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: true /** Missing source maps for large first-party JavaScript */,
+  // Contentlayer injects a webpack config; empty turbopack silences Next 16's mismatch error.
+  turbopack: {},
   images: {
     formats: ["image/avif", "image/webp"],
     unoptimized: false,

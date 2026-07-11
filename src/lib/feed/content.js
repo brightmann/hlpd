@@ -1,5 +1,5 @@
 import { absolutize, postUrl } from "./urls";
-import { transformMermaidSvgs } from "./mermaid";
+import { transformMermaidDiagrams } from "./mermaid";
 
 function escapeAttr(text) {
   return String(text || "")
@@ -171,7 +171,7 @@ function fixVoidTags(html) {
 
 /**
  * Produce reader-ready HTML for a single post:
- *   1. Mermaid diagrams -> self-contained <img> figures.
+ *   1. Mermaid diagrams -> mermaid.ink hosted <img> figures.
  *   2. Math -> semantic MathML (presentation layer stripped).
  *   3. All URLs absolutised, images cleaned, void tags normalised.
  *
@@ -180,7 +180,7 @@ function fixVoidTags(html) {
  */
 export function buildFeedContent(post) {
   let html = post.body.html || "";
-  html = transformMermaidSvgs(html);
+  html = transformMermaidDiagrams(html);
   html = stripKatexPresentation(html);
   html = markDisplayMath(html);
   html = absolutizeUrls(html, post.slug);
