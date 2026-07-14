@@ -202,3 +202,15 @@ html.dark .yarl__slide_footer {
   transform: translateY(-50%);
   opacity: 0.236;
 }
+
+/* 1. 强制外层容器和主体换行 */
+.katex-display {
+  white-space: normal !important;
+}
+.katex-display > .katex {
+  white-space: normal !important;
+}
+.katex-display > .katex > .katex-html {
+  white-space: normal !important;
+  display: inline !important; /* 允许内部元素折行 */
+}
