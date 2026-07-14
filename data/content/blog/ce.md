@@ -1,8 +1,6 @@
 ---
 title: 稀奇古怪的中国经济
 featured: true
-image: /static/images/assets_return_chart.png
-imageDesc: xyz
 tags:
   - misc1
   - misc2
