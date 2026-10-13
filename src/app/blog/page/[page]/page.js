@@ -9,7 +9,7 @@ const POSTS_PER_PAGE = 10
 export const dynamic = "force-dynamic"
 
 export default async function PostsPage({ params }) {
-  const { page } = await params
+  const { page } = params
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.publishDate), new Date(b.publishDate))
   })

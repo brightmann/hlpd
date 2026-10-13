@@ -29,7 +29,7 @@ async function getPageFromParams(params) {
 }
 
 export async function generateMetadata(props) {
-  const params = await props.params;
+  const params = props.params;
   const page = await getPageFromParams(params)
 
   if (!page) {
@@ -62,7 +62,7 @@ export async function generateMetadata(props) {
 }
 
 export default async function PagePage(props) {
-  const params = await props.params;
+  const params = props.params;
   const page = await getPageFromParams(params)
 
   if (!page) {

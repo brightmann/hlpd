@@ -60,7 +60,7 @@ async function getAdjacentPosts(post) {
 }
 
 export async function generateMetadata(props) {
-  const params = await props.params;
+  const params = props.params;
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -95,7 +95,7 @@ export async function generateMetadata(props) {
 }
 
 export default async function PostPage(props) {
-  const params = await props.params;
+  const params = props.params;
   const post = await getPostFromParams(params);
   if (!post || post.draft === true) {
     notFound();

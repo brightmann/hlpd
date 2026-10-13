@@ -5,7 +5,7 @@ import { tagCounts, sortedTags } from "../../../lib/tag-counts";
 import PageTransition from "../../../components/page-transition";
 
 export default async function Tag(props) {
-  const params = await props.params;
+  const params = props.params;
   const slug = params?.slug?.join("/");
   const filterPosts = allPosts.filter((post) => post.tags.includes(slug));
   if (!filterPosts || filterPosts == '') {
