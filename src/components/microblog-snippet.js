@@ -1,13 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
 import moment from 'moment';
 import Link from 'next/link';
+import { microblogs as allMicroblogs } from '@/lib/generated-content';
 
 export default function MicroblogSnippet() {
-  const filePath = path.join(process.cwd(), 'data', 'microblog.yaml');
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-  const microblogs = yaml.load(fileContent)
+  const microblogs = [...allMicroblogs]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 5);
 

@@ -1,7 +1,5 @@
-import { statSync } from "node:fs";
-import path from "node:path";
 import { Feed } from "feed";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, coverSizes } from "@/lib/generated-content";
 import { compareDesc } from "date-fns";
 import siteMetadata from "../../../data/sitemetadata";
 import { buildFeedContent } from "./content";
@@ -27,6 +25,9 @@ const IMAGE_MIME = {
  * `image/*` enclosure to populate the entry thumbnail). Returns undefined for
  * posts without a real local cover (e.g. dynamic OG cards), which then carry no
  * enclosure rather than an invalid zero-length one.
+ *
+ * File sizes are precomputed at build time (scripts/build-content.mjs) since
+ * the Workers runtime has no filesystem.
  */
 function coverEnclosure(post) {
   const image = String(post.image || "").trim();
@@ -36,13 +37,9 @@ function coverEnclosure(post) {
   const type = IMAGE_MIME[ext];
   if (!type) return undefined;
 
-  try {
-    const { size } = statSync(path.join(process.cwd(), "public", image));
-    if (!size) return undefined;
-    return { url: absolutize(image), type, length: size };
-  } catch {
-    return undefined;
-  }
+  const size = coverSizes[image];
+  if (!size) return undefined;
+  return { url: absolutize(image), type, length: size };
 }
 
 /**

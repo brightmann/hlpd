@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated"
+import { allPosts } from "@/lib/generated-content"
 import { compareDesc } from "date-fns";
 import PostsLayout from "./bloglistlayout"
 import siteMetadata from "../../../data/sitemetadata"

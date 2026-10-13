@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "@/lib/generated-content";
 import PostsLayout from "../../blog/bloglistlayout";
 import { tagCounts, sortedTags } from "../../../lib/tag-counts";
 import PageTransition from "../../../components/page-transition";

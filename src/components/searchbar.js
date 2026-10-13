@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "@/lib/generated-content";
 import PostCard from "./postcard";
 
 const data = allPosts

@@ -8,7 +8,7 @@ const siteMetadata = {
     "对当下的反思和批判",
   language: "zh-CN",
   keywords:['prologue', '序章','槐序'],
-  siteUrl: "https://prologue.dev",
+  siteUrl: "https://hlpd.luckypoem.workers.dev",
   siteRepo: "prologue.dev",
   repoid:"R_kgDOHl4HGg",
   categoryid: "DIC_kwDOHl4HGs4CP_Jc",

@@ -10,6 +10,9 @@
 # next.js
 /.next/
 
+# opennext
+/.open-next/
+
 # contentlayer
 /.contentlayer
 

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
-import { allPosts } from "contentlayer/generated";
+import nextDynamic from "next/dynamic";
+import { allPosts } from "@/lib/generated-content";
 import "katex/dist/katex.min.css";
 import siteMetadata from "../../../../data/sitemetadata";
 import ScrollTopAndComment from "../../../components/scroll";
@@ -13,9 +13,11 @@ import AboutMe from "../../../components/aboutme";
 import { OptimizedHTMLRenderer } from "../../../components/optimized-html-renderer";
 import PageTransition from "../../../components/page-transition";
 
-const Comments = dynamic(() => import("../../../components/comments"), {
+const Comments = nextDynamic(() => import("../../../components/comments"), {
   loading: () => <div className="h-32" aria-hidden />,
 });
+
+export const dynamic = "force-dynamic";
 
 
 async function getPostFromParams(params) {
@@ -90,12 +92,6 @@ export async function generateMetadata(props) {
       ],
     },
   };
-}
-
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slugAsParams.split("/"),
-  }));
 }
 
 export default async function PostPage(props) {

@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated"
+import { allPosts } from "@/lib/generated-content"
 import siteMetadata from "../../data/sitemetadata";
 
 export default async function sitemap() {

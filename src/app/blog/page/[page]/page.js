@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated"
+import { allPosts } from "@/lib/generated-content"
 import PostsLayout from "../../bloglistlayout"
 import { compareDesc } from 'date-fns'
 import { tagCounts, sortedTags } from "../../../../lib/tag-counts"
@@ -6,15 +6,7 @@ import PageTransition from "../../../../components/page-transition"
 
 const POSTS_PER_PAGE = 10
 
-export async function generateStaticParams() {
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE)
-  const paths = Array.from({ length: totalPages }, (_, i) => ({
-    page: (i + 1).toString() ,
-  }))
-
-  return paths
-
-}
+export const dynamic = "force-dynamic"
 
 export default async function PostsPage({ params }) {
   const { page } = await params

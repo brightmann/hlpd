@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "@/lib/generated-content";
 
 export const tagCounts = (() => {
   const counts = {};

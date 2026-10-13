@@ -1,14 +1,16 @@
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
-import dynamic from "next/dynamic"
-import { allPages } from "contentlayer/generated"
-import { MDXComponent } from "../../components/mdxcomponent"
+import nextDynamic from "next/dynamic"
+import { allPages } from "@/lib/generated-content"
+import { getMdxPageComponent } from "@/lib/compiled/registry"
 import siteMetadata from "../../../data/sitemetadata"
 import TableofContent from "../../components/toc"
 import ScrollTopAndComment from "../../components/scroll"
 import PageTransition from "../../components/page-transition"
 
-const Comments = dynamic(() => import("../../components/comments"), {
+export const dynamic = "force-dynamic"
+
+const Comments = nextDynamic(() => import("../../components/comments"), {
   loading: () => <div className="h-32" aria-hidden />,
 })
 
@@ -59,17 +61,16 @@ export async function generateMetadata(props) {
   }
 }
 
-export async function generateStaticParams() {
-  return allPages.map((page) => ({
-    slug: page.slugAsParams.split("/"),
-  }))
-}
-
 export default async function PagePage(props) {
   const params = await props.params;
   const page = await getPageFromParams(params)
 
   if (!page) {
+    notFound()
+  }
+
+  const PageContent = getMdxPageComponent(page.slugAsParams)
+  if (!PageContent) {
     notFound()
   }
 
@@ -84,7 +85,7 @@ export default async function PagePage(props) {
             </p>
           )}
           <hr className="py-2 pt-2" />
-          <MDXComponent code={page.body.code} />
+          <PageContent />
           <hr />
           <Suspense fallback={<div className="h-32" aria-hidden />}>
             <Comments />

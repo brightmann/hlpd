@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { allPosts } from "contentlayer/generated";
+import { allPosts } from "@/lib/generated-content";
 import siteMetadata from "../../data/sitemetadata";
 
 const POSTS_NUM = allPosts.length;
